@@ -20,7 +20,7 @@ SECRET_KEY = secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['djoz.cyberswave.com' , 'www.djoz.cyberswave.com']
 
 # Application definition
 
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'debug_toolbar',
     'djangosecure',
-    'csp'
+    'csp',
 ]
 
 
@@ -54,7 +54,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Project Middlewares
 
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django_permissions_policy.PermissionsPolicyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -229,3 +231,43 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR,'core_cache'),
     }
 }
+
+# Custom Security 
+
+SECURE_REFERRER_POLICY = 'same-origin'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+PERMISSIONS_POLICY = {
+    'autoplay': "'none'",
+    'camera': "'none'",
+    'fullscreen': "'self'",
+    'geolocation': "'none'",
+    'microphone': "'none'",
+}
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'",)
+CSP_IMG_SRC = ("'self'",)
+CSP_FONT_SRC = ("'self'",)
+CSP_CONNECT_SRC = ("'self'",)
+CSP_FRAME_SRC = ("'self'",)
+CSP_OBJECT_SRC = ("'none'",)
+CSP_MEDIA_SRC = ("'self'",)
+CSP_FORM_ACTION = ("'self'",)
+CSP_BASE_URI = ("'self'",)
+CSP_FRAME_ANCESTORS = ("'none'",)
+CSP_BLOCK_ALL_MIXED_CONTENT = True
+CSP_UPGRADE_INSECURE_REQUESTS = True
+CSP_REPORT_ONLY = False
+CSP_REPORT_URI = "/csp-report-endpoint/"

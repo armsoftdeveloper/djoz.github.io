@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% include 'includes/breadcrumb.html'%}
+<!-- Skills Section Begin -->
+<section class="skills spad">
+    <div class="container">
+        <div class="row">
+            {% if skills.is_published %}
+                <div class="col-lg-6 p-0">
+                    <div class="skills__content">
+                        <div class="section-title">
+                            <h2>{{skills.title}}</h2>
+                            <h1>{{title}}</h1>
+                        </div>
+                        <p>{{skills.description}}</p>
+                        <div class="skill__bar__item">
+                            <p>{{skills.option_first_title}}</p>
+                            <div id="bar1" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="{{skills.option_first_range}}"></span>
+                            </div>
+                        </div>
+                        <div class="skill__bar__item">
+                            <p>{{skills.option_second_title}}</p>
+                            <div id="bar2" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="{{skills.option_second_range}}"></span>
+                            </div>
+                        </div>
+                        <div class="skill__bar__item">
+                            <p>{{skills.option_third_title}}</p>
+                            <div id="bar3" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="{{skills.option_third_range}}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="skills__video set-bg" data-setbg="{{skills.img.url}}">
+                        <a href="{{skills.url}}" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- Skills Section End -->
+<!-- About Section Begin -->
+<section class="about spad mt-5">
+    <div class="container">
+        <div class="row">
+            {% include 'pages/about_spad.html'%}
+        </div>
+    </div>
+</section>
+<!-- About Section End -->
+<!-- About Pic Begin -->
+<div class="about-pic">
+    <div class="container-fluid">
+        <div class="row">
+            {% if image_group.is_published %}
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{image_group.img_first.url}}" alt="Service Image">
+                            <img src="{{image_group.img_second.url}}" alt="Service Image">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{image_group.img_third.url}}" alt="Service Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{image_group.img_fourth.url}}" alt="Service Image">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{image_group.img_fiveth.url}}" alt="Service Image">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{image_group.img_sixth.url}}" alt="Service Image">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{image_group.img_seventh.url}}" alt="Service Image">
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- About Pic End -->
+<!-- About Services Section Begin -->
+<section class="about-services spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title center-title">
+                    <h2>WHERE DO I PLAY</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for items in about_feed %}
+                {% if items.is_published %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="about__services__item">
+                            <div class="about__services__item__pic set-bg" data-setbg="{{items.img.url}}">
+                                <div class="icon">
+                                    <img src="{{items.icon_image.url}}" alt="Services Icon">
+                                </div>
+                            </div>
+                            <div class="about__services__item__text">
+                                <h4>{{items.title}}</h4>
+                                <p>{{items.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- About Services Section End -->
+{% endblock %}

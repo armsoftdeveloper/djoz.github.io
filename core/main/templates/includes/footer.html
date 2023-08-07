@@ -1,0 +1,65 @@
+{% load static %}
+<!-- Footer Section Begin -->
+<footer class="{% if title == 'Home' %} footer spad set-bg footer-media{% else %} footer footer--normal spad set-bg {% endif %} " data-setbg="{% static 'img/footer-bg.png' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer__address">
+                    <ul>
+                        <li>
+                            <a href="tel:{{static_info.phone}}">
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>{{static_info.phone}}</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:{{static_info.email}}">
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>{{static_info.email}}</h6>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1 col-md-6">
+                <div class="footer__social">
+                    <h2>DJoz</h2>
+                    <div class="footer__social__links">
+                        <a href="{{static_info.facebook_url}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href"{{static_info.twitter_url}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{static_info.instagram_url}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6">
+                <div class="footer__newslatter">
+                    <h4>Stay With Us</h4>
+                    <form id="newsletter-form">
+                        {% csrf_token %}
+                        {{ formNewsletter.email }}
+                        <div> {{ formNewsletter.name.errors }} {{ formNewsletter.email.errors }}</div>
+                        <button type="submit"><i class="fa fa-send-o"></i></button>
+                    </form>
+                    <div class="spin-loader-parent spin-loader-newsletter mt-4">
+                        <div class="spin-loader"></div>
+                    </div>
+                    <div class="alert-control alert-control-newsletter mt-4" id="success">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__copyright__text">
+            <p>
+                <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+            </p>
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This Page Was Created By
+                <a href="https://cyberswave.com/" class="cyberswave" target="_blank">Cyberswave<img src="{% static 'img/companyLogo.png'%}" class="cyberswave-logo"></a>
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+<script src="{% static 'js/ajax.js' %}"></script>

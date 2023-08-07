@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block 'content'%}
+{% include 'includes/ticket_section.html'%}
+<!-- Tours Section Begin -->
+<section class="tours spad">
+    <div class="container">
+        <div class="row">
+            {% for items in page_obj %}
+                {% if items.is_published %}
+                    <div class="tour-item">
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="tours__item__text">
+                                <h2>{{items.title}}</h2>
+                                <div class="tours__text__widget">
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-clock-o"></i>
+                                            <span>{{items.set_time}}</span>
+                                            <span>{{items.set_date}}</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-map-marker"></i>
+                                            {{items.location}}
+                                        </li>
+                                    </ul>
+                                    <div class="price">$ {{items.price}}</div>
+                                </div>
+                                <div class="tours__text__desc">
+                                    <p>{{items.description|linebreaks}}</p>
+                                </div>
+                                <a href="#" class="primary-btn border-btn">Buy tickets</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="tours__item__pic">
+                                <img src="{{items.img.url}}" alt="Tours Image">
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-12">
+            <div class="pagination__links">
+                {% include 'includes/pagination.html'%}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tours Section End -->
+{% endblock %}

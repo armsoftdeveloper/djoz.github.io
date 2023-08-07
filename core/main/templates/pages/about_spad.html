@@ -1,0 +1,26 @@
+<!-- About Section Begin -->
+<section class="about spad">
+    <div class="container">
+        <div class="row">
+            {% if about_spad.is_published %}
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <img src="{{about_spad.img.url}}" alt="About Image">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <h2>{{about_spad.title}}</h2>
+                            <h1>About me</h1>
+                        </div>
+                        <p>{{about_spad.description}}</p>
+                        <a href="#" class="primary-btn">CONTACT WITH ME</a>
+                    </div>
+                </div>
+                {% else %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- About Section End -->

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% include 'includes/breadcrumb.html'%}
+<!-- Video Section Begin -->
+<section class="videos spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% if first_video %}
+                    {% if first_video.is_published %}
+                        <div class="section-title center-title">
+                            <h2>Youtube feed</h2>
+                            <h1>Latest videos</h1>
+                        </div>
+                        <div class="videos__large__item set-bg" data-setbg="{{first_video.img.url}}">
+                            <a href="{{first_video.url}}" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                            <div class="videos__large__item__text">
+                                <h4>{{first_video.title}}</h4>
+                                <ul>
+                                    <li>{{first_video.set_date}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                            {% else %}
+                        {% endif %}
+                    {% else %}
+                {% endif %}
+                <div class="row">
+                    <div class="videos__slider owl-carousel">
+                        {% for items in videos %}
+                            {% if items.is_published %}
+                                    <div class="col-lg-3">
+                                        <div class="videos__item">
+                                            <div class="videos__item__pic set-bg" data-setbg="{{items.img.url}}">
+                                                <a href="{{items.url}}" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                            </div>
+                                            <div class="videos__item__text">
+                                                <h5>{{items.title}}</h5>
+                                                <ul>
+                                                    <li>{{items.set_date}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Video Section End -->
+{% endblock %}

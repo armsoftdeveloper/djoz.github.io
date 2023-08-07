@@ -1,0 +1,32 @@
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+                <div class="header__logo">
+                    <a href="{% url 'home' %}"><img src="{{static_info.logo.url}}" alt="Logo Image"></a>
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-10">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            {% for link in menu %}
+                                <li{% if link.title == title %} class="active"{% endif %}>
+                                    <a href="{% url link.url_name %}">{{ link.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                    <div class="header__right__social">
+                        <a href="{{static_info.facebook_url}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{static_info.twiiter_url}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{static_info.instagram_url}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+</header>
+<!-- Header Section End -->

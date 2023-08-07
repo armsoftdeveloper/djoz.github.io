@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'content' %}
+{% include 'includes/breadcrumb.html'%}
+<!-- Discography Section Begin -->
+<section class="discography spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title center-title">
+                    <h2>Latest Releases</h2>
+                    <h1>{{title}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           {% for items in page_obj %}
+                {% if items.is_published %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="discography__item">
+                            <div class="discography__item__pic">
+                                <img src="{{items.img.url}}" alt="Discography Image">
+                            </div>
+                            <div class="discography__item__text">
+                                <span>$ {{items.price}}</span>
+                                <h4>{{items.title}}</h4>
+                                <a href="{{items.app_store}}" target="_blank"><img src="{% static 'img/discography/link-1.jpg' %}" alt="App Store"></a>
+                                <a href="{{items.google_play}}" target="_blank"><img src="{% static 'img/discography/link-2.jpg' %}" alt="Google Play"></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-lg-12">
+                <div class="pagination__links">
+                    {% include 'includes/pagination.html'%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Discography Section End -->
+{% endblock %}

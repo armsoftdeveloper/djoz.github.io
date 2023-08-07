@@ -1,1 +1,4 @@
-bab00fb3105189cf571b5254e0ec3c189e22cd8236f9579b9779898aaf9f612425
+Developer Armen Vardanyan 
+
+* Python Django
+* Ajax

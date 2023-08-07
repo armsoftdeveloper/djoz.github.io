@@ -253,7 +253,7 @@ class ContactMessageCreateView(CreateView):
                 subject=subject,
                 body=body,
                 from_email=form.cleaned_data['email'],
-                to=["armsoftdeveloper@gmail.com"],
+                to=["email"],
             )
             email.send()
         except Exception as e:
@@ -302,7 +302,7 @@ class NewsletterCreateView(CreateView):
                 subject=subject,
                 body=body,
                 from_email=form.cleaned_data['email'],
-                to=["armsoftdeveloper@gmail.com"],
+                to=["email"],
             )
             email.send()
         except Exception as e:
